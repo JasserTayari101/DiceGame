@@ -44,9 +44,10 @@ function animateDice(rolled){
 const currents = Array.from( document.querySelectorAll(".current em") );
 console.log(currents);
 
-let currentPlayer = 0;
-let currentScore = 0;
+let currentPlayer = 0;  //keep track of players turns
+let currentScore = 0;   //keep track of the current score
 const btnRoll = document.querySelector(".roll");
+
 
 btnRoll.addEventListener('click',()=>{
     let rolled = roll();
@@ -56,12 +57,16 @@ btnRoll.addEventListener('click',()=>{
     if(rolled == 1){
         console.log(`Player ${playerName} rolled a one : RESET!`);
         currentScore = 0;
+        currents[currentPlayer%2].textContent = currentScore;
         currentPlayer++;
     }else{
         console.log(`Player ${playerName} rolled ${rolled}.`);
         currentScore+=rolled;
         console.log(`Player ${playerName}'s score : ${currentScore}`);
+        currents[currentPlayer%2].textContent = currentScore;
     }
-    
+
     
 });
+
+
