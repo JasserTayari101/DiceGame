@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Dice Game</title>
+</head>
+<body>
+    <div id="table">
+        <!--Player 1 side-->
+        <div class="side one">
+            <h2>PLAYER 1</h2>
+            <em class="score">0</em>
+            <div class="current">
+                <h4>CURRENT</h4>
+                <em>0</em>
+            </div>
+        </div>
+        <!--Game controls-->
+        <div class="controls">
+            <button class="btn reset">🔄 NEW GAME</button>
+            <div id="dice">
+                <div class="hidden point one"></div>
+                <div class="hidden point two"></div>
+                <div class="hidden point three"></div>
+                <div class="hidden point four"></div>
+                <div class="hidden point five"></div>
+                <div class="hidden point six"></div>
+                <div class="hidden point seven"></div>
+            </div>
+            <button class="btn roll">🎲 ROLL DICE</button>
+            <button class="btn hold">🕹️ HOLD</button>
+        </div>
+        <!--Player 2 side-->
+        <div class="side two">
+            <h2>PLAYER 2</h2>
+            <em class="score">0</em>
+            <div class="current">
+                <h4>CURRENT</h4>
+                <em>0</em>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

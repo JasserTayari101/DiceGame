@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+body{
+    background-image: linear-gradient(67deg,rgb(206, 35, 90),rgb(114, 3, 114));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+#table{
+    display: flex;
+    margin-bottom: 40vh;
+    width: 80vw;
+    .side{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 20px;
+        padding: 50px;
+        .score{
+            margin-top: 5%;
+            margin-bottom: 50%;
+            color: rgb(215, 62, 85);
+            font-size: 1.4em;
+        }
+        .current{
+            background-color: rgb(215, 62, 85);
+            border-radius: 15px;
+            color: white;
+            padding: 10px;
+        }
+    }
+    .one{
+        background-color: rgba(249, 162, 179, 0.863);
+    }
+    .two{
+        background-color: rgba(87, 156, 246, 0.759);
+    }
+    .controls{
+        width: 0;
+        z-index: 1;
+        position: relative;
+        right: 30px;
+        top: 20px;
+        .btn,#dice{
+            height: 15%;
+            width: 3rem;
+            font-size: .7rem;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.702);
+            border: none;
+        }
+        .btn{
+            border-radius: 15px;
+            &:hover{
+                text-shadow: 0 0 10px black;
+            }
+        }
+        #dice{
+            position: relative;
+            .point{
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: red;
+                border-radius: 100%;
+            }
+            .one{
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .two{
+                top: 10%;
+                left: 5%;
+            }
+            .three{
+                top: 10%;
+                right: 5%;
+            }
+            .four{
+                bottom: 10%;
+                right: 5%;
+            }
+            .five{
+                bottom: 10%;
+                left: 5%;
+            }
+            .six{
+                top: 50%;
+                left: 5%;
+                transform: translate(0,-50%);
+            }
+            .seven{
+                top: 50%;
+                right: 5%;
+                transform: translate(0,-50%);
+            }
+        }
+    }
+}
