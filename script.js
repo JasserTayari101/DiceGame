@@ -52,7 +52,7 @@ function updateValues(){
 
 
     try{
-        if(totals[(currentPlayer-1)%2].textContent >= 20){
+        if(totals[(currentPlayer-1)%2].textContent >= 50){
             result.textContent = `Player ${namePlayer(currentPlayer-1)} Won!!!`;
             btnRoll.removeEventListener('click',rollGame);
             btnHold.removeEventListener('click',holdGame);
