@@ -41,10 +41,29 @@ function animateDice(rolled){
 
 
 
-const currents = Array.from( document.querySelectorAll(".current em") );
-console.log(currents);
+let currents = Array.from( document.querySelectorAll(".current em") );
+let totals = Array.from(document.querySelectorAll(".score"));
+
+function updateValues(){
+    currents = Array.from( document.querySelectorAll(".current em") );
+    totals = Array.from(document.querySelectorAll(".score"));
+}
+
+
+
 
 let currentPlayer = 0;  //keep track of players turns
+let sides = Array.from(document.querySelectorAll(".side"));
+sides[1].style.opacity = .5;
+
+
+
+function updatePlayer(){
+    sides[currentPlayer%2].style.opacity = .5;
+    currentPlayer++;
+    sides[currentPlayer%2].style.opacity = 1;
+}
+
 let currentScore = 0;   //keep track of the current score
 const btnRoll = document.querySelector(".roll");
 
@@ -58,15 +77,26 @@ btnRoll.addEventListener('click',()=>{
         console.log(`Player ${playerName} rolled a one : RESET!`);
         currentScore = 0;
         currents[currentPlayer%2].textContent = currentScore;
-        currentPlayer++;
+        updatePlayer();
     }else{
         console.log(`Player ${playerName} rolled ${rolled}.`);
         currentScore+=rolled;
         console.log(`Player ${playerName}'s score : ${currentScore}`);
         currents[currentPlayer%2].textContent = currentScore;
     }
-
+    updateValues();
     
 });
 
 
+const btnHold = document.querySelector('.hold');
+
+btnHold.addEventListener('click',()=>{
+    const total = Number(totals[currentPlayer%2].textContent);
+
+    totals[currentPlayer%2].textContent = total+currentScore; //add to total score
+    currents[currentPlayer%2].textContent = 0; //reset current score
+    updatePlayer();
+    currentScore = 0;
+    updateValues();
+})
