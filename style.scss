@@ -114,3 +114,10 @@ body{
 .hidden{
     display: none;
 }
+
+#result{
+    position: absolute;
+    top: 5vh;
+    color: white;
+    font-size: 2rem;
+}

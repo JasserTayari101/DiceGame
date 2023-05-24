@@ -44,9 +44,22 @@ function animateDice(rolled){
 let currents = Array.from( document.querySelectorAll(".current em") );
 let totals = Array.from(document.querySelectorAll(".score"));
 
+const result = document.getElementById('result');
+
 function updateValues(){
     currents = Array.from( document.querySelectorAll(".current em") );
     totals = Array.from(document.querySelectorAll(".score"));
+
+
+    try{
+        if(totals[(currentPlayer-1)%2].textContent >= 20){
+            result.textContent = `Player ${namePlayer(currentPlayer-1)} Won!!!`;
+            btnRoll.removeEventListener('click',rollGame);
+            btnHold.removeEventListener('click',holdGame);
+        }
+    }catch{
+        ;
+    }
 }
 
 
@@ -68,7 +81,9 @@ let currentScore = 0;   //keep track of the current score
 const btnRoll = document.querySelector(".roll");
 
 
-btnRoll.addEventListener('click',()=>{
+
+
+function rollGame(){
     let rolled = roll();
     animateDice(rolled);
     let playerName = namePlayer(currentPlayer);
@@ -85,13 +100,16 @@ btnRoll.addEventListener('click',()=>{
         currents[currentPlayer%2].textContent = currentScore;
     }
     updateValues();
-    
-});
+
+}
 
 
-const btnHold = document.querySelector('.hold');
 
-btnHold.addEventListener('click',()=>{
+
+btnRoll.addEventListener('click',rollGame);
+
+
+function holdGame(){
     const total = Number(totals[currentPlayer%2].textContent);
 
     totals[currentPlayer%2].textContent = total+currentScore; //add to total score
@@ -99,4 +117,30 @@ btnHold.addEventListener('click',()=>{
     updatePlayer();
     currentScore = 0;
     updateValues();
-})
+
+}
+
+
+const btnHold = document.querySelector('.hold');
+
+btnHold.addEventListener('click',holdGame)
+
+
+
+const btnNewGame = document.querySelector('.reset');
+
+function gameReset(){
+    currentPlayer = 0;
+    currentScore = 0;
+    totals[0].textContent = 0;
+    totals[1].textContent = 0;
+    sides[1].style.opacity = .5;
+    sides[0].style.opacity = 1;
+    updateValues();
+    btnRoll.addEventListener('click',rollGame);
+    btnHold.addEventListener('click',holdGame);
+    result.textContent = "";
+}
+
+
+btnNewGame.addEventListener('click',gameReset)
